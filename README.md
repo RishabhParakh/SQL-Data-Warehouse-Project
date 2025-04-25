@@ -1,86 +1,125 @@
-# Data Warehouse Project
+# 🏗️ SQL Data Warehouse Project
 
-Welcome to the **Data Warehouse Project** repository! 🚀  
-This project demonstrates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. Designed as a portfolio project, it highlights industry best practices in data engineering and analytics.
+A complete end-to-end data warehousing solution simulating real-world CRM and ERP data integration. This project demonstrates how raw data can be transformed into meaningful business insights through a multi-layered architecture. Built entirely in SQL, it highlights essential ETL concepts, data modeling, and quality validation.
 
 ---
-## 🏗️ Data Architecture
 
-The data architecture for this project follows Medallion Architecture **Bronze**, **Silver**, and **Gold** layers:
+## 📊 Project Objective
+
+To build a modular, well-structured data warehouse that:
+- Ingests raw data from CRM and ERP systems
+- Cleans and transforms data into structured formats
+- Organizes it using a Star Schema for easy reporting and business intelligence
+
+---
+
+## 🏢 Medallion Architecture (Bronze → Silver → Gold)
+
+This project follows the **Medallion Architecture**, organizing data into three structured layers:
+
+- **Bronze Layer**: Raw ingested data (as-is from CRM/ERP)
+- **Silver Layer**: Cleaned, standardized, and enriched datasets
+- **Gold Layer**: Business-ready fact and dimension views for analytics, reporting, and ML
+
+### 📈 Medallion Architecture Flow
+
 ![Data Architecture](docs/data_architecture_in_detail.png)
 
-
-1. **Bronze Layer**: Stores raw data as-is from the source systems. Data is ingested from CSV Files into SQL Server Database.
-2. **Silver Layer**: This layer includes data cleansing, standardization, and normalization processes to prepare data for analysis.
-3. **Gold Layer**: Houses business-ready data modeled into a star schema required for reporting and analytics.
-
 ---
-## 📖 Project Overview
 
-This project involves:
+## ⚙️ ETL Methods Used in This Project
 
-1. **Data Architecture**: Designing a Modern Data Warehouse Using Medallion Architecture **Bronze**, **Silver**, and **Gold** layers.
-2. **ETL Pipelines**: Extracting, transforming, and loading data from source systems into the warehouse.
-3. **Data Modeling**: Developing fact and dimension tables optimized for analytical queries.
-4. **Analytics & Reporting**: Creating SQL-based reports and dashboards for actionable insights.
+From the wide range of ETL strategies available, this project adopts the most effective industry-standard methods for real-world use cases.
 
-## 🛠️ Technical Implementation
+✅ Implemented methods include:
+- **Pull Extraction**
+- **File Parsing**
+- **Batch Processing**
+- **Full Load (Truncate & Insert)**
+- **SCD Type 1 (Overwrite)**
+- **Data Cleansing, Enrichment, Normalization**
+- **Data Aggregation and Business Logic**
 
-1. Architected a three-tier Medallion structure (Bronze/Silver/Gold) that systematically processed data from raw ingestion to analytics-ready models
-2. Integrated two critical business systems (ERP and CRM) by creating a unified data model that resolved complex entity relationships
-3. Developed robust ETL processes with quality validation checks to ensure data accuracy and completeness
-4. Designed a star schema optimized for analytical queries, enabling efficient reporting on previously unavailable cross-functional metrics
-5. Created SQL-based analytics that revealed actionable insights into sales performance, customer behavior, and product trends
+### 📌 ETL Coverage Visualization
 
-## 💻 Advanced SQL Techniques Applied
+![ETL Methods Used in the Project](docs/ETL_methods_used_in_the_project.png)
 
-1. Implemented complex Common Table Expressions (CTEs) to handle hierarchical data structures
-2. Leveraged window functions (RANK, LEAD, LAG, PARTITION BY) to analyze time-series data and track changes
-3. Optimized performance using indexed views and materialized query tables
-4. Utilized dynamic SQL for flexible reporting solutions
-5. Applied data quality controls through constraints, referential integrity, and validation procedures
-6. Designed recursive queries to navigate and analyze complex organizational relationships
-7. Implemented stored procedures and user-defined functions for standardized data transformations
-
-
-
+> ✔️ Green checkmarks in the diagram indicate the exact methods applied during pipeline development.
 
 ---
 
-## 🛠️ Tools Used in the Project:
+## 🚀 Project Architecture
 
-Everything is for Free!
-- **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Lightweight server for hosting your SQL database.
-- **[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16):** GUI for managing and interacting with databases.
-- **[Git Repository](https://github.com/):** Set up a GitHub account and repository to manage, version, and collaborate on your code efficiently.
-- **[DrawIO](https://www.drawio.com/):** Design data architecture, models, flows, and diagrams.
-- **[Notion](https://www.notion.com/):** Get the Project Template from Notion
+The project follows a **three-layer architecture**:
+
+### 1. 🟫 Bronze Layer – Raw Data Ingestion
+- **Data Source**: Flat files from CRM (`cust_info.csv`, `prd_info.csv`, `sales_details.csv`) and ERP systems (`LOC_A101.csv`, `PX_CAT_G1V2.csv`)
+- **SQL Used**: `init_database.sql`, `ddl_bronze.sql`, `proc_load_bronze.sql`
+- **Purpose**: Load raw data as-is without modifications for traceability
+
+### 2. 🪙 Silver Layer – Data Cleansing and Structuring
+- **SQL Used**: `ddl_silver.sql`, `proc_load_silver.sql`, `quality_checks_silver.sql`
+- **Purpose**:
+  - Clean and standardize formats
+  - Remove nulls or duplicate data
+  - Enrich with business logic (e.g., calculated columns)
+
+### 3. 🥇 Gold Layer – Analytics-Ready
+- **SQL Used**: `ddl_gold.sql`, `quality_checks_gold.sql`
+- **Fact Table**: `fact_sales`
+- **Dimension Tables**: `dim_customers`, `dim_products`
+- **Purpose**:
+  - Reshape into star schema
+  - Enable efficient querying and reporting for stakeholders
 
 ---
 
-## 🚀 Project Requirements
+## 💡 Key Features
 
-### Building the Data Warehouse (Data Engineering)
-
-#### Objective
-Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
-
-#### Specifications
-- **Data Sources**: Import data from two source systems (ERP and CRM) provided as CSV files.
-- **Data Quality**: Cleanse and resolve data quality issues prior to analysis.
-- **Integration**: Combine both sources into a single, user-friendly data model designed for analytical queries.
-- **Scope**: Focus on the latest dataset only; historization of data is not required.
-- **Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
+- ✅ **Structured ETL pipeline** using modular SQL scripts
+- ⚖️ **Quality checks** at Silver and Gold layers
+- 📈 **Business-aligned modeling** with facts and dimensions
+- 📚 **Documented architecture**, naming standards, and data dictionary
 
 ---
 
-### BI: Analytics & Reporting (Data Analysis)
+## 📃 Supporting Assets
 
-#### Objective
-Develop SQL-based analytics to deliver detailed insights into:
-- **Customer Behavior**
-- **Product Performance**
-- **Sales Trends**
+- **Data Architecture**: `Data_flow.png`, `Data_Integration.png`, `Data_Model.png`
+- **ETL Diagrams**: `ETL methods.png`, `ETL_methods_used_in_the_project.png`
+- **Docs**:
+  - `data_catalog.md` – Data dictionary for gold layer
+  - `data_layers.pdf` – Explanation of bronze/silver/gold layers
+  - `naming_conventions.md` – Object naming rules
 
-These insights empower stakeholders with key business metrics, enabling strategic decision-making. 
+---
+
+## 🎓 Skills Demonstrated
+
+- SQL joins (inner, left), subqueries, CTEs
+- Data modeling using Star Schema
+- Surrogate keys, technical metadata columns
+- Stored Procedures for ETL automation
+- Data quality auditing and validation
+
+---
+
+## ✅ How to Use
+
+1. Run `init_database.sql` to set up the environment  
+2. Load Bronze layer using `proc_load_bronze.sql`  
+3. Clean data into Silver layer using `proc_load_silver.sql`  
+4. Create Gold layer with `ddl_gold.sql`  
+5. Run quality checks from `quality_checks_silver.sql` and `quality_checks_gold.sql`  
+
+---
+
+## 🌟 Outcome
+
+This project simulates a real-world data warehousing process and equips professionals with hands-on experience in:
+- Handling messy enterprise data
+- Structuring data pipelines
+- Preparing data for analytics and BI
+
+Ideal for roles in **Data Engineering**, **Business Intelligence**, and **Data Analytics**.
 
