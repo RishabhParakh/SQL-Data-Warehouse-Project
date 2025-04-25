@@ -24,6 +24,26 @@ This project involves:
 3. **Data Modeling**: Developing fact and dimension tables optimized for analytical queries.
 4. **Analytics & Reporting**: Creating SQL-based reports and dashboards for actionable insights.
 
+## 🛠️ Technical Implementation
+
+1. Architected a three-tier Medallion structure (Bronze/Silver/Gold) that systematically processed data from raw ingestion to analytics-ready models
+2. Integrated two critical business systems (ERP and CRM) by creating a unified data model that resolved complex entity relationships
+3. Developed robust ETL processes with quality validation checks to ensure data accuracy and completeness
+4. Designed a star schema optimized for analytical queries, enabling efficient reporting on previously unavailable cross-functional metrics
+5. Created SQL-based analytics that revealed actionable insights into sales performance, customer behavior, and product trends
+
+## 💻 Advanced SQL Techniques Applied
+
+1. Implemented complex Common Table Expressions (CTEs) to handle hierarchical data structures
+2. Leveraged window functions (RANK, LEAD, LAG, PARTITION BY) to analyze time-series data and track changes
+3. Optimized performance using indexed views and materialized query tables
+4. Utilized dynamic SQL for flexible reporting solutions
+5. Applied data quality controls through constraints, referential integrity, and validation procedures
+6. Designed recursive queries to navigate and analyze complex organizational relationships
+7. Implemented stored procedures and user-defined functions for standardized data transformations
+
+
+
 
 ---
 
